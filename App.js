@@ -9,10 +9,22 @@ import PayingScreen from "./src/views/PayingScreen";
 import RegisterUser from "./src/views/RegisterUser";
 import ClassicLogin from "./src/views/ClassicLogin";
 import TouchScreen from "./src/views/TouchScreen";
+import axios from "axios";
+
+const baseURL="http://localhost:3000/users";
 
 const Stack = createStackNavigator();
 
 export default function App() {
+
+    const [post, setPost] = React.useState(null);
+
+    React.useEffect(() => {
+        axios.get(baseURL).then((response) => {
+            setPost(response.data);
+        });
+    }, []);
+
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -25,7 +37,7 @@ export default function App() {
     return (
         <NativeBaseProvider>
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="Home">
+                <Stack.Navigator initialRouteName="TouchScreen">
                     <Stack.Screen name="Home" component={HomeScreen} />
                     <Stack.Screen name="LastTransactions" component={LastTransactions} />
                     <Stack.Screen name="PayingScreen" component={PayingScreen} />
