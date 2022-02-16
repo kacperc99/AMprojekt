@@ -45,29 +45,13 @@ const TouchScreen = ({navigation}) => {
     },[])
 
     return (
-        <View>
-            {loading ?
-                <HStack space={2} justifyContent="center">
-                    <Spinner accessibilityLabel="Loading posts" />
-                    <Heading color="primary.500" fontSize="md">
-                        Loading
-                    </Heading>
-                </HStack>
-                 :
                 <View>
-					<Touch onLongPress={() => touchIdAuth.bind()} delayPressIn={0} >
-						<Circle bgColor="#1e1e1e">
-							<Circle bgColor="#5196f405">
-								<Circle bgColor="#5196f410">
-									<Circle bgColor="#5196f430">
-										<TouchButton>
-											<MaterialIcons name="fingerprint" size={64} color="#ffffff" />
-										</TouchButton>
-									</Circle>
-								</Circle>
-							</Circle>
-						</Circle>
-					</Touch>				
+			<Touch onLongPress={() => touchIdAuth.bind()} delayPressIn={0} >
+
+									<TouchButton>
+										<MaterialIcons name="fingerprint" size={64} color="#ffffff" />
+									</TouchButton>
+			</Touch>				
 
                     <Button
                         onPress={() => navigation.navigate('ClassicLogin')}>
@@ -78,8 +62,6 @@ const TouchScreen = ({navigation}) => {
                         Registration
                     </Button>
                 </View>
-            }
-        </View>
     );
 };
 
@@ -87,12 +69,6 @@ const Touch = styled.TouchableOpacity`
     flex: 1;
     align-items: center;
     justify-content: center;
-`;
-
-const Circle = styled.View`
-    background-color: ${(props) => props.bgColor};
-    padding: 32px;
-    border-radius: 999px;
 `;
 
 const TouchButton = styled.View`
@@ -106,8 +82,13 @@ const Button = styled.View`
 	border-radius: 100 px;
 
 `;
-const Container = styled.SafeAreaView`
-    flex: 1;
-    background-color: #1e1e1e;
+
+const View = styled.View`
+	padding: 10px;
+	width: 50%;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #cc0000;
+	background-color: #000000;
 `;
 export default TouchScreen;
